@@ -1,9 +1,9 @@
 name: "my-website"
 output_dir: "."
 navbar:
-  title: "Pages"
+  title: "R-Tutorials"
   left:
     - text: "Home"
       href: index.html
-    - text: "Tutorials"
-      href: tutorial_table_of_contents.html
+    - text: "Blog Posts"
+      href: navPages/tutorial_table_of_contents.html

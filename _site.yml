@@ -6,4 +6,4 @@ navbar:
     - text: "Home"
       href: index.html
     - text: "Blog Posts"
-      href: nav_tutorial_toc.html
+      href: nav_tutorials_toc.html

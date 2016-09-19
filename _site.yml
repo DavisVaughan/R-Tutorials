@@ -4,8 +4,10 @@ navbar:
   title: "R-Tutorials"
   left:
     - text: "Home"
+      icon: fa-home
       href: index.html
     - text: "Blog Posts"
+      icon: fa-book
       href: nav_tutorials_toc.html
 output:
   html_document:

@@ -7,3 +7,6 @@ navbar:
       href: index.html
     - text: "Blog Posts"
       href: nav_tutorials_toc.html
+output:
+  html_document:
+    theme: cosmo

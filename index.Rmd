@@ -2,7 +2,7 @@
 title: "R-Tutorials"
 author: "davis"
 date: "September 18, 2016"
-output: html_notebook
+output: html_document
 ---
 
 ```{r setup, include=FALSE}

@@ -4,3 +4,5 @@ author: "Davis Vaughan"
 date: "September 18, 2016"
 output: html_document
 ---
+
+No matter what level of R Programmer you are, you likely struggle to remember every single intricate detail required by ggplot2. It has a steep learning curve compared to base R's plotting functions, but once you learn to use it, it can produce production level graphics. This post will serve as a quick reference guide to the large number of 

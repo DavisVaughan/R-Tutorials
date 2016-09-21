@@ -5,6 +5,8 @@ date: <center>September 18, 2016</center>
 output: 
   html_document:
     code_folding: hide
+    toc: true
+    toc_float: True
 ---
 <center>
 
@@ -12,7 +14,7 @@ No matter what level of R Programmer you are, you likely struggle to remember ev
 
 ---
 
-<h1>Scatter Plots</h1>
+#Scatter Plots
 
 I often need scatter plots to show relationships between data. Let's look at a quick example of the benefits of ggplot vs base R.
 
@@ -28,5 +30,8 @@ library(ggplot2)
 qplot(data=cars,x=speed,y=dist,geom="point")
 ```
 
+---
+
+#Line Graphs
 
 </center>

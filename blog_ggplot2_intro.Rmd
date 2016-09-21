@@ -25,7 +25,7 @@ plot(cars)
 __Pretty Plot__
 ```{r fig.height=4, fig.width=10}
 library(ggplot2)
-qplot(data=cars,x=speed,y=dist,geom="line")
+qplot(data=cars,x=speed,y=dist,geom="point")
 ```
 
 

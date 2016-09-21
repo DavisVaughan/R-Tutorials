@@ -243,11 +243,11 @@ Scatter Plots
 <p>I often need scatter plots to show relationships between data. Let’s look at a quick example of the benefits of ggplot vs base R.</p>
 <p><strong>Ugly Plot</strong></p>
 <pre class="r"><code>plot(cars)</code></pre>
-<p><img src="blog_ggplot2_intro_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="blog_ggplot2_intro_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p><strong>Pretty Plot</strong></p>
 <pre class="r"><code>library(ggplot2)
-qplot(data=cars,x=speed,y=dist,geom=&quot;line&quot;)</code></pre>
-<p><img src="blog_ggplot2_intro_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
+qplot(data=cars,x=speed,y=dist,geom=&quot;point&quot;)</code></pre>
+<p><img src="blog_ggplot2_intro_files/figure-html/unnamed-chunk-14-1.png" width="960" /></p>
 </center>
 
 

@@ -29,7 +29,7 @@ plot(cars)
 ```{r fig.height=4, fig.width=10}
 library(ggplot2)
 library(plotly,warn.conflicts = FALSE)
-ggplotly(qplot(data=cars,x=speed,y=dist,geom="point"),height = 350, width = 500)
+ggplotly(qplot(data=cars,x=speed,y=dist,geom="point"),height = 400, width = 600)
 
 ```
 

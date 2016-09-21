@@ -223,8 +223,13 @@ September 18, 2016
 Line Graph
 </h1>
 </center>
+<p>Ugly Plot</p>
 <pre class="r"><code>plot(cars)</code></pre>
 <p><img src="blog_ggplot2_intro_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>Pretty Plot</p>
+<pre class="r"><code>library(ggplot2)
+qplot(data=cars,x=speed,y=dist,geom=&quot;point&quot;)</code></pre>
+<p><img src="blog_ggplot2_intro_files/figure-html/unnamed-chunk-2-1.png" width="768" /></p>
 
 
 

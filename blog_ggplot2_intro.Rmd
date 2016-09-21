@@ -9,7 +9,16 @@ No matter what level of R Programmer you are, you likely struggle to remember ev
 
 <center> <h1>Line Graph</h1> </center>
 
+
+Ugly Plot
 ```{r}
 plot(cars)
 ```
+
+Pretty Plot
+```{r fig.height=4, fig.width=8}
+library(ggplot2)
+qplot(data=cars,x=speed,y=dist,geom="point")
+```
+
 

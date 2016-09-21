@@ -6,22 +6,27 @@ output:
   html_document:
     code_folding: hide
 ---
+<center>
 
 No matter what level of R Programmer you are, you likely struggle to remember every single intricate detail required by ggplot2. It has a steep learning curve compared to base R's plotting functions, but once you learn to use it, it can produce production level graphics. This post will serve as a quick reference guide to ggplot2. The idea is that it can quickly give an example of the code and output for each type of plot you might need.
 
-<center> <h1>Scatter Plots</h1> </center>
+---
+
+<h1>Scatter Plots</h1>
 
 I often need scatter plots to show relationships between data. Let's look at a quick example of the benefits of ggplot vs base R.
 
-<center>Ugly Plot</center>
+__Ugly Plot__
 ```{r}
 plot(cars)
 ```
 
-<center>Pretty Plot</center>
+
+__Pretty Plot__
 ```{r fig.height=4, fig.width=10}
 library(ggplot2)
 qplot(data=cars,x=speed,y=dist,geom="point")
 ```
 
 
+</center>

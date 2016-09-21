@@ -1,8 +1,15 @@
 ---
-title: "Introduction to ggplot2"
-author: "Davis Vaughan"
-date: "September 18, 2016"
+title: <center>Introduction to ggplot2</center>
+author: <center>Davis Vaughan</center>
+date: <center>September 18, 2016</center>
 output: html_document
 ---
 
-No matter what level of R Programmer you are, you likely struggle to remember every single intricate detail required by ggplot2. It has a steep learning curve compared to base R's plotting functions, but once you learn to use it, it can produce production level graphics. This post will serve as a quick reference guide to the large number of 
+No matter what level of R Programmer you are, you likely struggle to remember every single intricate detail required by ggplot2. It has a steep learning curve compared to base R's plotting functions, but once you learn to use it, it can produce production level graphics. This post will serve as a quick reference guide to ggplot2. The idea is that it can quickly give an example of the code and output for each type of plot you might need.
+
+<center> <h1>Line Graph</h1> </center>
+
+```{r}
+plot(cars)
+```
+

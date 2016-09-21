@@ -160,6 +160,15 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 
 
@@ -202,6 +211,14 @@ $(document).ready(function () {
 
 <div class="fluid-row" id="header">
 
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
 
 
 <h1 class="title toc-ignore"><center>
@@ -220,16 +237,21 @@ September 18, 2016
 <p>No matter what level of R Programmer you are, you likely struggle to remember every single intricate detail required by ggplot2. It has a steep learning curve compared to base R’s plotting functions, but once you learn to use it, it can produce production level graphics. This post will serve as a quick reference guide to ggplot2. The idea is that it can quickly give an example of the code and output for each type of plot you might need.</p>
 <center>
 <h1>
-Line Graph
+Scatter Plots
 </h1>
 </center>
-<p>Ugly Plot</p>
+<p>I often need scatter plots to show relationships between data. Let’s look at a quick example of the benefits of ggplot vs base R.</p>
+<center>
+Ugly Plot
+</center>
 <pre class="r"><code>plot(cars)</code></pre>
 <p><img src="blog_ggplot2_intro_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<p>Pretty Plot</p>
+<center>
+Pretty Plot
+</center>
 <pre class="r"><code>library(ggplot2)
 qplot(data=cars,x=speed,y=dist,geom=&quot;point&quot;)</code></pre>
-<p><img src="blog_ggplot2_intro_files/figure-html/unnamed-chunk-2-1.png" width="768" /></p>
+<p><img src="blog_ggplot2_intro_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
 
 
 

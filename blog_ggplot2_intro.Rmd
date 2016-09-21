@@ -26,11 +26,10 @@ plot(cars)
 ---
 
 ##ggplot2
-```{r fig.height=4, fig.width=10}
+```{r}
 library(ggplot2)
 library(plotly,warn.conflicts = FALSE)
 ggplotly(qplot(data=cars,x=speed,y=dist,geom="point"),height = 400, width = 600)
-
 ```
 
 ---

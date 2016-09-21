@@ -14,17 +14,18 @@ No matter what level of R Programmer you are, you likely struggle to remember ev
 
 ---
 
-#Scatter Plots
+#Scatter Plots {.tabset .tabset-fade}
 
 I often need scatter plots to show relationships between data. Let's look at a quick example of the benefits of ggplot vs base R.
 
-__Ugly Plot__
+##Base R
 ```{r}
 plot(cars)
 ```
 
+---
 
-__Pretty Plot__
+##ggplot2
 ```{r fig.height=4, fig.width=10}
 library(ggplot2)
 qplot(data=cars,x=speed,y=dist,geom="point")
@@ -33,5 +34,6 @@ qplot(data=cars,x=speed,y=dist,geom="point")
 ---
 
 #Line Graphs
+
 
 </center>

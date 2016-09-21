@@ -334,17 +334,22 @@ September 18, 2016
 <center>
 <p>No matter what level of R Programmer you are, you likely struggle to remember every single intricate detail required by ggplot2. It has a steep learning curve compared to base R’s plotting functions, but once you learn to use it, it can produce production level graphics. This post will serve as a quick reference guide to ggplot2. The idea is that it can quickly give an example of the code and output for each type of plot you might need.</p>
 <hr />
-<div id="scatter-plots" class="section level1">
+<div id="scatter-plots" class="section level1 tabset tabset-fade">
 <h1>Scatter Plots</h1>
 <p>I often need scatter plots to show relationships between data. Let’s look at a quick example of the benefits of ggplot vs base R.</p>
-<p><strong>Ugly Plot</strong></p>
+<div id="base-r" class="section level2">
+<h2>Base R</h2>
 <pre class="r"><code>plot(cars)</code></pre>
 <p><img src="blog_ggplot2_intro_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<p><strong>Pretty Plot</strong></p>
+<hr />
+</div>
+<div id="ggplot2" class="section level2">
+<h2>ggplot2</h2>
 <pre class="r"><code>library(ggplot2)
 qplot(data=cars,x=speed,y=dist,geom=&quot;point&quot;)</code></pre>
 <p><img src="blog_ggplot2_intro_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
 <hr />
+</div>
 </div>
 <div id="line-graphs" class="section level1">
 <h1>Line Graphs</h1>

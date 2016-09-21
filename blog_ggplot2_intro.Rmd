@@ -28,7 +28,9 @@ plot(cars)
 ##ggplot2
 ```{r fig.height=4, fig.width=10}
 library(ggplot2)
-qplot(data=cars,x=speed,y=dist,geom="point")
+library(plotly,warn.conflicts = FALSE)
+ggplotly(qplot(data=cars,x=speed,y=dist,geom="point"))
+
 ```
 
 ---

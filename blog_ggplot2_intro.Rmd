@@ -4,7 +4,7 @@ author: <center>Davis Vaughan</center>
 date: <center>September 18, 2016</center>
 output: 
   html_document:
-    code_folding: hide
+    code_folding: show
     toc: true
     toc_float: True
 ---
@@ -20,9 +20,9 @@ No matter what level of R Programmer you are, you likely struggle to remember ev
 
 ---
 
-#Scatter Plots {.tabset .tabset-fade}
+#Some Motivation {.tabset .tabset-fade}
 
-I often need scatter plots to show relationships between data. Let's look at a quick example of the benefits of ggplot vs base R.
+One might say, "R already makes nice graphics!" So, before we get started, let's quickly compare ggplot vs base R with a simple scatter plot example. As you can see below, the plot created using a combination of ggplot's quick plot function and plotly is clearly superior over base R.
 
 ##Base R
 ```{r}
@@ -41,7 +41,42 @@ ggplotly(prettyPlot, height = 400, width = 600)
 
 ---
 
+#Scatter Plots
+
+It's time to get into the nitty gritty. Let's learn to make a scatter plot using ggplot2. Here is the basic syntax.
+
+```{r scatterExample,fig.height=4, fig.width=6 }
+ggplot(data=cars) +
+  geom_line( aes(x = speed, y = dist) )
+```
+
+Let's break this down. It seems like a lot just to make a scatter plot, and it is, but let's give ggplot2 the benefit of the doubt. What it lacks in wordiness, it makes up for in flexibility. Here is what is happening:
+
+<div align="left">
+
+1) ggplot(data=cars) - The basic function for setting up the plot. Here, I commonly define the data.frame that I will be pulling my data from using the data paramater. Cars is just a built in dataset.
+
+2) "+" - Yes, the plus sign is very important. One way to think about this is "adding" a geometry to your plot (like a line). [Here](http://stackoverflow.com/questions/38166708/plus-sign-between-ggplot2-and-other-function-r) is something that might clear this up.
+
+3) geom_line( aes(x = speed, y = dist) ) - This function has quite a few parts.
+    * geom - This stands for "geometry," and is a common way to add elements to a ggplot graph. A common geometry is a line, like what is shown here. 
+    * aes() - This is the aesthetics function. This is where you add your x and y components. It can also add a number of other things, like color (or colour as Hadley the creator of ggplot2 would say). This can actually help with creating a legend, so check that section for more information. Also, see [this](http://stackoverflow.com/questions/11657380/is-there-a-table-or-catalog-of-aesthetics-for-ggplot2) stackoverflow post for a complete list of default aesthetics that you can play with.
+
+</div>
+
+---
+
 #Line Graphs
 
+---
 
-</center>
+#Legends
+
+---
+
+#Quick Plots with qplot()
+
+---
+
+#Interactive Plots With Plotly
+

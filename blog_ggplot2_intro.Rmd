@@ -16,7 +16,7 @@ library(ggplot2)
 library(plotly, warn.conflicts = FALSE)
 ```
 
-No matter what level of R Programmer you are, you likely struggle to remember every single intricate detail required by ggplot2. It has a steep learning curve compared to base R's plotting functions, but once you learn to use it, it can produce production level graphics. This post will serve as a quick reference guide to ggplot2. The idea is that it can quickly give an example of the code and output for each type of plot you might need.
+No matter what level of R Programmer you are, you likely struggle to remember every detail required by ggplot2. It has a steep learning curve compared to base R's plotting functions, but once you learn to use it, it can produce production level graphics. This post will serve as a quick reference guide to ggplot2. The idea is that it can quickly give an example of the code and output for each type of plot you might need.
 
 ---
 
@@ -25,7 +25,7 @@ No matter what level of R Programmer you are, you likely struggle to remember ev
 One might say, "R already makes nice graphics!" So, before we get started, let's quickly compare ggplot vs base R with a simple scatter plot example. As you can see below, the plot created using a combination of ggplot's quick plot function and plotly is clearly superior over base R.
 
 ##Base R
-```{r}
+```{r, fig.height=4, fig.width=6}
 plot(cars)
 ```
 
@@ -41,36 +41,102 @@ ggplotly(prettyPlot, height = 400, width = 600)
 
 ---
 
-#Scatter Plots
+#Line Graphs
 
-It's time to get into the nitty gritty. Let's learn to make a scatter plot using ggplot2. Here is the basic syntax.
+It's time to get into the nitty gritty. Let's learn to make a line graph using ggplot2. Here is the basic syntax.
 
-```{r scatterExample,fig.height=4, fig.width=6 }
+```{r line,fig.height=4, fig.width=6 }
 ggplot(data=cars) +
-  geom_line( aes(x = speed, y = dist) )
+  geom_line(mapping = aes(x = speed, y = dist) )
 ```
 
-Let's break this down. It seems like a lot just to make a scatter plot, and it is, but let's give ggplot2 the benefit of the doubt. What it lacks in wordiness, it makes up for in flexibility. Here is what is happening:
+Let's break this down. It seems like a lot just to make a line graph, and it is, but let's give ggplot2 the benefit of the doubt. What it lacks in wordiness, it makes up for in flexibility. Here is what is happening:
 
 <div align="left">
 
-1) ggplot(data=cars) - The basic function for setting up the plot. Here, I commonly define the data.frame that I will be pulling my data from using the data paramater. Cars is just a built in dataset.
+1) ggplot(data=cars) - The basic function for setting up the plot. Here, I define the data.frame that I will be pulling my data from using the data parameter. Cars is just a dataset that comes standard with R.
 
-2) "+" - Yes, the plus sign is very important. One way to think about this is "adding" a geometry to your plot (like a line). [Here](http://stackoverflow.com/questions/38166708/plus-sign-between-ggplot2-and-other-function-r) is something that might clear this up.
+2) "+" - Yes, the plus sign actually does something. One way to think about this is "adding" a geometry to your plot (like a line). [Here](http://stackoverflow.com/questions/38166708/plus-sign-between-ggplot2-and-other-function-r) is something that might clear this up.
 
-3) geom_line( aes(x = speed, y = dist) ) - This function has quite a few parts.
-    * geom - This stands for "geometry," and is a common way to add elements to a ggplot graph. A common geometry is a line, like what is shown here. 
-    * aes() - This is the aesthetics function. This is where you add your x and y components. It can also add a number of other things, like color (or colour as Hadley the creator of ggplot2 would say). This can actually help with creating a legend, so check that section for more information. Also, see [this](http://stackoverflow.com/questions/11657380/is-there-a-table-or-catalog-of-aesthetics-for-ggplot2) stackoverflow post for a complete list of default aesthetics that you can play with.
+3) geom_line(mapping = aes(x = speed, y = dist) )
+    * geom -  Really "geometry," and is a common way to add elements to a ggplot graph. The geometry here is a line.
+    
+    * mapping - Where we define our aesthetics that get "mapped" to the line we are drawing.
+    
+    * aes() - The aesthetics function. This is where you add your x and y components. It can also add a number of other things, like color (or colour as Hadley the creator of ggplot2 would say). This can actually help with creating a legend, check that section for more information. Also, see [this](http://stackoverflow.com/questions/11657380/is-there-a-table-or-catalog-of-aesthetics-for-ggplot2) stackoverflow post for a complete list of default aesthetics that you can play with.
 
 </div>
 
+What if we wanted to add another line to the graph? Just add another line geometry! Easy!
+
+```{r 2Lines,fig.height=4, fig.width=6 }
+ggplot(data=cars) +
+  geom_line(mapping = aes(x = speed, y = dist)) +
+  geom_line(mapping = aes(x = speed*1.2, y = dist) , color="red")
+```
+
+Notice how we add a color as a paramater to the geom_line() function. There are a few ways to add color, they are discussed in a later section. 
+
 ---
 
-#Line Graphs
+#Scatter Plots
+
+To create a scatter plot, we do the following.
+
+```{r scatter,fig.height=4, fig.width=6 }
+ggplot(data=cars) +
+  geom_point( mapping = aes(x = speed, y = dist) )
+```
+
+As you are hopefully beginning to see, the basic structure of ggplot graphics are the same, we just change the geometries that get created. 
+
+Let's add a line to this scatter plot, and highlight a key feature. 
+
+```{r scatterAndLine,fig.height=4, fig.width=6 }
+ggplot(data=cars, mapping = aes(x = speed, y = dist)) +
+  geom_point() +
+  geom_line()
+```
+
+Notice here that the aesthetics are mapped once inside of the original call to ggplot(). It does not matter where you put the mapping, and this saves us from typing it in each geometry. This all works because each geometry has a paramater called "inherit.aes" which is automatically set to true. 
+
+---
+
+#Histograms
+
+A basic histogram is simple. The binwidth defaults to 30. I would encourage you to explore other sizes.
+
+```{r histogram,fig.height=4, fig.width=6 }
+ggplot(data=cars) +
+  geom_histogram(mapping = aes(x = dist), binwidth = 10, color="blue")
+```
+
+What if we want to create a histogram and overlay a kernal density on top of it? Notice that this might be a bit of a challenge, considering that the y values are counts, but the kernal density function has y values in terms of much smaller density terms. Luckily, if you set the y value of the histogram to "..density..", it works exactly as we would want.
+
+```{r histogramAndDensity,fig.height=4, fig.width=6 }
+ggplot(data=cars) +
+  geom_histogram(mapping = aes(x = dist, y = ..density..), binwidth = 10, color="blue") +
+  geom_density(mapping = aes(x = dist))
+```
 
 ---
 
 #Legends
+
+Remember when we had two lines on the same graph? What if we wanted to display a legend that would allow the user to differentiate between them? One odd way to accomplish this is actually through the colour parameter inside the aes function. Let's take a look.
+
+```{r legend,fig.height=4, fig.width=6 }
+ggplot(data=cars) +
+  geom_line(mapping = aes(x = speed, y = dist, colour = "Original")) +
+  geom_line(mapping = aes(x = speed*1.2, y = dist, colour="Shifted") ) +
+  labs(colour="Legend")
+```
+
+IMPORTANT: This example brings up an important nuance if you are working with legends this way. The "colour" parameter goes inside the aes function, and maps the title of the line (Original / Shifted) to the color of the line, where the color is chosen for you by ggplot. The "color" parameter gets sent to the geom_line function, and if you try to use this in combination with "colour", it will override all plots on the graph to that "color."
+
+The labs function tacked on at the end allows us to change the title of the legend from "colour" to "Legend." It can also be used to change the x and y axis titles using "x=" or "y=" as parameters.
+
+For a more in depth analysis of legends, see [this](http://www.cookbook-r.com/Graphs/Legends_(ggplot2)/) page.
 
 ---
 

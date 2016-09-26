@@ -7,6 +7,8 @@ output:
     code_folding: show
     toc: true
     toc_float: True
+    fig_width: 6
+    fig_height: 4
 ---
 <center>
 
@@ -45,7 +47,7 @@ ggplotly(prettyPlot, height = 400, width = 600)
 
 It's time to get into the nitty gritty. Let's learn to make a line graph using ggplot2. Here is the basic syntax.
 
-```{r line,fig.height=4, fig.width=6 }
+```{r line}
 ggplot(data=cars) +
   geom_line(mapping = aes(x = speed, y = dist) )
 ```
@@ -69,7 +71,7 @@ Let's break this down. It seems like a lot just to make a line graph, and it is,
 
 What if we wanted to add another line to the graph? Just add another line geometry! Easy!
 
-```{r 2Lines,fig.height=4, fig.width=6 }
+```{r 2Lines}
 ggplot(data=cars) +
   geom_line(mapping = aes(x = speed, y = dist)) +
   geom_line(mapping = aes(x = speed*1.2, y = dist) , color="red")
@@ -83,7 +85,7 @@ Notice how we add a color as a paramater to the geom_line() function. There are 
 
 To create a scatter plot, we do the following.
 
-```{r scatter,fig.height=4, fig.width=6 }
+```{r scatter}
 ggplot(data=cars) +
   geom_point( mapping = aes(x = speed, y = dist) )
 ```
@@ -92,7 +94,7 @@ As you are hopefully beginning to see, the basic structure of ggplot graphics ar
 
 Let's add a line to this scatter plot, and highlight a key feature. 
 
-```{r scatterAndLine,fig.height=4, fig.width=6 }
+```{r scatterAndLine}
 ggplot(data=cars, mapping = aes(x = speed, y = dist)) +
   geom_point() +
   geom_line()
@@ -106,14 +108,14 @@ Notice here that the aesthetics are mapped once inside of the original call to g
 
 A basic histogram is simple. The binwidth defaults to 30. I would encourage you to explore other sizes.
 
-```{r histogram,fig.height=4, fig.width=6 }
+```{r histogram}
 ggplot(data=cars) +
   geom_histogram(mapping = aes(x = dist), binwidth = 10, color="blue")
 ```
 
 What if we want to create a histogram and overlay a kernal density on top of it? Notice that this might be a bit of a challenge, considering that the y values are counts, but the kernal density function has y values in terms of much smaller density terms. Luckily, if you set the y value of the histogram to "..density..", it works exactly as we would want.
 
-```{r histogramAndDensity,fig.height=4, fig.width=6 }
+```{r histogramAndDensity}
 ggplot(data=cars) +
   geom_histogram(mapping = aes(x = dist, y = ..density..), binwidth = 10, color="blue") +
   geom_density(mapping = aes(x = dist))
@@ -125,7 +127,7 @@ ggplot(data=cars) +
 
 Remember when we had two lines on the same graph? What if we wanted to display a legend that would allow the user to differentiate between them? One odd way to accomplish this is actually through the colour parameter inside the aes function. Let's take a look.
 
-```{r legend,fig.height=4, fig.width=6 }
+```{r legend}
 ggplot(data=cars) +
   geom_line(mapping = aes(x = speed, y = dist, colour = "Original")) +
   geom_line(mapping = aes(x = speed*1.2, y = dist, colour="Shifted") ) +

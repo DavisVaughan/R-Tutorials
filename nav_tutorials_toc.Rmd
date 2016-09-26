@@ -5,4 +5,3 @@ title: "Blog Posts"
 ----
 
 1) [Introduction to ggplot2](blog_ggplot2_intro.html)
-2) 

@@ -5,8 +5,10 @@ date: <center>September 18, 2016</center>
 output: 
   html_document:
     code_folding: show
-    toc: true
+    toc: True
+    css: custom.css
     toc_float: True
+      smooth_scroll: true
     fig_width: 6
     fig_height: 4
 ---
@@ -77,7 +79,7 @@ ggplot(data=cars) +
   geom_line(mapping = aes(x = speed*1.2, y = dist) , color="red")
 ```
 
-Notice how we add a color as a paramater to the geom_line() function. There are a few ways to add color, they are discussed in a later section. 
+Notice how we add a color as a parameter to the geom_line() function. There are a few ways to add color, they are discussed in a later section. 
 
 ---
 
@@ -100,20 +102,20 @@ ggplot(data=cars, mapping = aes(x = speed, y = dist)) +
   geom_line()
 ```
 
-Notice here that the aesthetics are mapped once inside of the original call to ggplot(). It does not matter where you put the mapping, and this saves us from typing it in each geometry. This all works because each geometry has a paramater called "inherit.aes" which is automatically set to true. 
+Notice here that the aesthetics are mapped once inside of the original call to ggplot(). It does not matter where you put the mapping, and this saves us from typing it in each geometry. This all works because each geometry has a parameter called "inherit.aes" which is automatically set to true. 
 
 ---
 
 #Histograms
 
-A basic histogram is simple. The binwidth defaults to 30. I would encourage you to explore other sizes.
+A basic histogram is simple. The bin width defaults to 30. I would encourage you to explore other sizes.
 
 ```{r histogram}
 ggplot(data=cars) +
   geom_histogram(mapping = aes(x = dist), binwidth = 10, color="blue")
 ```
 
-What if we want to create a histogram and overlay a kernal density on top of it? Notice that this might be a bit of a challenge, considering that the y values are counts, but the kernal density function has y values in terms of much smaller density terms. Luckily, if you set the y value of the histogram to "..density..", it works exactly as we would want.
+What if we want to create a histogram and overlay a kernel density on top of it? Notice that this might be a bit of a challenge, considering that the y values are counts, but the kernel density function has y values in terms of much smaller density terms. Luckily, if you set the y value of the histogram to "..density..", it works exactly as we would want.
 
 ```{r histogramAndDensity}
 ggplot(data=cars) +

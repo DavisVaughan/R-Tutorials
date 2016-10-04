@@ -1,15 +1,22 @@
-name: "my-website"
+name: "R-Tutorials"
 output_dir: "."
 navbar:
   title: "R-Tutorials"
   type: inverse
-  left:
-    - text: "Home"
-      icon: fa-home
-      href: index.html
+  right:
     - text: "Blog Posts"
-      icon: fa-book
-      href: nav_tutorials_toc.html
+      icon: fa-bars
+      menu:
+        - text: "Data Visualization"
+        - text: "ggplot2"
+          href: blog_ggplot2_intro.html
+        - text: "---------"
+        - text: "Analytics and Performance"
+        - text: "Cpp + R = RCpp"
+          href: eventualRcpp.html
+
 output:
   html_document:
     theme: cosmo
+    
+    

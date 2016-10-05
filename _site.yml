@@ -1,4 +1,3 @@
-name: "R-Tutorials"
 output_dir: "."
 navbar:
   title: "R-Tutorials"
@@ -9,12 +8,11 @@ navbar:
       menu:
         - text: "Data Visualization"
         - text: "ggplot2"
-          href: blog_ggplot2_intro.html
+          href: blog_ggplot2.html
         - text: "---------"
         - text: "Analytics and Performance"
         - text: "Cpp + R = RCpp"
-          href: eventualRcpp.html
-
+          href: blog_RCpp.html
 output:
   html_document:
     theme: cosmo

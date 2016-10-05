@@ -1,7 +1,5 @@
 ---
-title: <center><br>Introduction to ggplot2</br></center>
-author: <center>Davis Vaughan</center>
-date: <center>September 18, 2016</center>
+title: <center><br>_Introduction to ggplot2_</br></center>
 output: 
   html_document:
     css: custom.css
@@ -26,18 +24,18 @@ No matter what level of R Programmer you are, you likely struggle to remember ev
 
 ---
 
-#Some Motivation {.tabset .tabset-fade}
+##Some Motivation {.tabset .tabset-fade}
 
 One might say, "R already makes nice graphics!" So, before we get started, let's quickly compare ggplot vs base R with a simple scatter plot example. As you can see below, the plot created using a combination of ggplot's quick plot function and plotly is clearly superior over base R.
 
-##Base R
+###Base R
 ```{r, fig.height=4, fig.width=6}
 plot(cars)
 ```
 
 ---
 
-##ggplot2
+###ggplot2
 ```{r}
 #Create a nice plot using "quick plot"
 prettyPlot <- qplot(data=cars, x=speed, y=dist, geom="point")
@@ -47,7 +45,7 @@ ggplotly(prettyPlot, height = 400, width = 600)
 
 ---
 
-#Line Graphs
+##Line Graphs
 
 It's time to get into the nitty gritty. Let's learn to make a line graph using ggplot2. Here is the basic syntax.
 
@@ -85,7 +83,7 @@ Notice how we add a color as a parameter to the geom_line() function. There are 
 
 ---
 
-#Scatter Plots
+##Scatter Plots
 
 To create a scatter plot, we do the following.
 
@@ -108,7 +106,7 @@ Notice here that the aesthetics are mapped once inside of the original call to g
 
 ---
 
-#Histograms
+##Histograms
 
 A basic histogram is simple. The bin width defaults to 30. I would encourage you to explore other sizes.
 
@@ -127,7 +125,7 @@ ggplot(data=cars) +
 
 ---
 
-#Legends
+##Legends
 
 Remember when we had two lines on the same graph? What if we wanted to display a legend that would allow the user to differentiate between them? One odd way to accomplish this is actually through the colour parameter inside the aes function. Let's take a look.
 
@@ -146,9 +144,9 @@ For a more in depth analysis of legends, see [this](http://www.cookbook-r.com/Gr
 
 ---
 
-#Quick Plots with qplot()
+##Quick Plots with qplot()
 
 ---
 
-#Interactive Plots With Plotly
+##Interactive Plots With Plotly
 

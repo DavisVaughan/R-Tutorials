@@ -303,12 +303,12 @@ div.tocify {
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Data Visualization</li>
     <li>
-      <a href="blog_ggplot2_intro.html">ggplot2</a>
+      <a href="blog_ggplot2.html">ggplot2</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Analytics and Performance</li>
     <li>
-      <a href="eventualRcpp.html">Cpp + R = RCpp</a>
+      <a href="blog_RCpp.html">Cpp + R = RCpp</a>
     </li>
   </ul>
 </li>
@@ -330,14 +330,8 @@ div.tocify {
 
 
 <h1 class="title toc-ignore"><center>
-<br>Introduction to ggplot2</br>
+<br><em>Introduction to ggplot2</em></br>
 </center></h1>
-<h4 class="author"><em><center>
-Davis Vaughan
-</center></em></h4>
-<h4 class="date"><em><center>
-September 18, 2016
-</center></em></h4>
 
 </div>
 
@@ -345,32 +339,32 @@ September 18, 2016
 <center>
 <p>No matter what level of R Programmer you are, you likely struggle to remember every detail required by ggplot2. It has a steep learning curve compared to base R’s plotting functions, but once you learn to use it, it can produce production level graphics. This post will serve as a quick reference guide to ggplot2. The idea is that it can quickly give an example of the code and output for each type of plot you might need.</p>
 <hr />
-<div id="some-motivation" class="section level1 tabset tabset-fade">
-<h1>Some Motivation</h1>
+<div id="some-motivation" class="section level2 tabset tabset-fade">
+<h2>Some Motivation</h2>
 <p>One might say, “R already makes nice graphics!” So, before we get started, let’s quickly compare ggplot vs base R with a simple scatter plot example. As you can see below, the plot created using a combination of ggplot’s quick plot function and plotly is clearly superior over base R.</p>
-<div id="base-r" class="section level2">
-<h2>Base R</h2>
+<div id="base-r" class="section level3">
+<h3>Base R</h3>
 <pre class="r"><code>plot(cars)</code></pre>
-<p><img src="blog_ggplot2_intro_files/figure-html/unnamed-chunk-2-1.png" width="576" /></p>
+<p><img src="blog_ggplot2_files/figure-html/unnamed-chunk-2-1.png" width="576" /></p>
 <hr />
 </div>
-<div id="ggplot2" class="section level2">
-<h2>ggplot2</h2>
+<div id="ggplot2" class="section level3">
+<h3>ggplot2</h3>
 <pre class="r"><code>#Create a nice plot using &quot;quick plot&quot;
 prettyPlot &lt;- qplot(data=cars, x=speed, y=dist, geom=&quot;point&quot;)
 #Make the plot interactive using ggplotly
 ggplotly(prettyPlot, height = 400, width = 600)</code></pre>
-<div id="htmlwidget-081b2c4b85a961ec55b0" style="width:600px;height:400px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-081b2c4b85a961ec55b0">{"x":{"data":[{"x":[4,4,7,7,8,9,10,10,10,11,11,12,12,12,12,13,13,13,13,14,14,14,14,15,15,15,16,16,17,17,17,18,18,18,18,19,19,19,20,20,20,20,20,22,23,24,24,24,24,25],"y":[2,10,4,22,16,10,18,26,34,17,28,14,20,24,28,26,34,34,46,26,36,60,80,20,26,54,32,40,32,40,50,42,56,76,84,36,46,68,32,48,52,56,64,66,54,70,92,93,120,85],"text":["speed: 4<br>dist: 2","speed: 4<br>dist: 10","speed: 7<br>dist: 4","speed: 7<br>dist: 22","speed: 8<br>dist: 16","speed: 9<br>dist: 10","speed: 10<br>dist: 18","speed: 10<br>dist: 26","speed: 10<br>dist: 34","speed: 11<br>dist: 17","speed: 11<br>dist: 28","speed: 12<br>dist: 14","speed: 12<br>dist: 20","speed: 12<br>dist: 24","speed: 12<br>dist: 28","speed: 13<br>dist: 26","speed: 13<br>dist: 34","speed: 13<br>dist: 34","speed: 13<br>dist: 46","speed: 14<br>dist: 26","speed: 14<br>dist: 36","speed: 14<br>dist: 60","speed: 14<br>dist: 80","speed: 15<br>dist: 20","speed: 15<br>dist: 26","speed: 15<br>dist: 54","speed: 16<br>dist: 32","speed: 16<br>dist: 40","speed: 17<br>dist: 32","speed: 17<br>dist: 40","speed: 17<br>dist: 50","speed: 18<br>dist: 42","speed: 18<br>dist: 56","speed: 18<br>dist: 76","speed: 18<br>dist: 84","speed: 19<br>dist: 36","speed: 19<br>dist: 46","speed: 19<br>dist: 68","speed: 20<br>dist: 32","speed: 20<br>dist: 48","speed: 20<br>dist: 52","speed: 20<br>dist: 56","speed: 20<br>dist: 64","speed: 22<br>dist: 66","speed: 23<br>dist: 54","speed: 24<br>dist: 70","speed: 24<br>dist: 92","speed: 24<br>dist: 93","speed: 24<br>dist: 120","speed: 25<br>dist: 85"],"key":null,"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","name":""}],"layout":{"margin":{"b":40.9132420091324,"l":43.1050228310502,"t":26.958904109589,"r":7.30593607305936},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"type":"linear","autorange":false,"tickmode":"array","range":[2.95,26.05],"ticktext":["5","10","15","20","25"],"tickvals":[5,10,15,20,25],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"domain":[0,1],"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"speed","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"type":"linear","autorange":false,"tickmode":"array","range":[-3.9,125.9],"ticktext":["0","25","50","75","100","125"],"tickvals":[0,25,50,75,100,125],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"domain":[0,1],"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"dist","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest"},"width":600,"height":400,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b60565203280c75df423" style="width:600px;height:400px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b60565203280c75df423">{"x":{"data":[{"x":[4,4,7,7,8,9,10,10,10,11,11,12,12,12,12,13,13,13,13,14,14,14,14,15,15,15,16,16,17,17,17,18,18,18,18,19,19,19,20,20,20,20,20,22,23,24,24,24,24,25],"y":[2,10,4,22,16,10,18,26,34,17,28,14,20,24,28,26,34,34,46,26,36,60,80,20,26,54,32,40,32,40,50,42,56,76,84,36,46,68,32,48,52,56,64,66,54,70,92,93,120,85],"text":["speed: 4<br>dist: 2","speed: 4<br>dist: 10","speed: 7<br>dist: 4","speed: 7<br>dist: 22","speed: 8<br>dist: 16","speed: 9<br>dist: 10","speed: 10<br>dist: 18","speed: 10<br>dist: 26","speed: 10<br>dist: 34","speed: 11<br>dist: 17","speed: 11<br>dist: 28","speed: 12<br>dist: 14","speed: 12<br>dist: 20","speed: 12<br>dist: 24","speed: 12<br>dist: 28","speed: 13<br>dist: 26","speed: 13<br>dist: 34","speed: 13<br>dist: 34","speed: 13<br>dist: 46","speed: 14<br>dist: 26","speed: 14<br>dist: 36","speed: 14<br>dist: 60","speed: 14<br>dist: 80","speed: 15<br>dist: 20","speed: 15<br>dist: 26","speed: 15<br>dist: 54","speed: 16<br>dist: 32","speed: 16<br>dist: 40","speed: 17<br>dist: 32","speed: 17<br>dist: 40","speed: 17<br>dist: 50","speed: 18<br>dist: 42","speed: 18<br>dist: 56","speed: 18<br>dist: 76","speed: 18<br>dist: 84","speed: 19<br>dist: 36","speed: 19<br>dist: 46","speed: 19<br>dist: 68","speed: 20<br>dist: 32","speed: 20<br>dist: 48","speed: 20<br>dist: 52","speed: 20<br>dist: 56","speed: 20<br>dist: 64","speed: 22<br>dist: 66","speed: 23<br>dist: 54","speed: 24<br>dist: 70","speed: 24<br>dist: 92","speed: 24<br>dist: 93","speed: 24<br>dist: 120","speed: 25<br>dist: 85"],"key":null,"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","name":""}],"layout":{"margin":{"b":40.9132420091324,"l":43.1050228310502,"t":26.958904109589,"r":7.30593607305936},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"type":"linear","autorange":false,"tickmode":"array","range":[2.95,26.05],"ticktext":["5","10","15","20","25"],"tickvals":[5,10,15,20,25],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"domain":[0,1],"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"speed","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"type":"linear","autorange":false,"tickmode":"array","range":[-3.9,125.9],"ticktext":["0","25","50","75","100","125"],"tickvals":[0,25,50,75,100,125],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"domain":[0,1],"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"dist","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest"},"width":600,"height":400,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <hr />
 </div>
 </div>
-<div id="line-graphs" class="section level1">
-<h1>Line Graphs</h1>
+<div id="line-graphs" class="section level2">
+<h2>Line Graphs</h2>
 <p>It’s time to get into the nitty gritty. Let’s learn to make a line graph using ggplot2. Here is the basic syntax.</p>
 <pre class="r"><code>ggplot(data=cars) +
   geom_line(mapping = aes(x = speed, y = dist) )</code></pre>
-<p><img src="blog_ggplot2_intro_files/figure-html/line-1.png" width="576" /></p>
+<p><img src="blog_ggplot2_files/figure-html/line-1.png" width="576" /></p>
 <p>Let’s break this down. It seems like a lot just to make a line graph, and it is, but let’s give ggplot2 the benefit of the doubt. What it lacks in wordiness, it makes up for in flexibility. Here is what is happening:</p>
 <div align="left">
 <ol style="list-style-type: decimal">
@@ -388,57 +382,57 @@ ggplotly(prettyPlot, height = 400, width = 600)</code></pre>
 <pre class="r"><code>ggplot(data=cars) +
   geom_line(mapping = aes(x = speed, y = dist)) +
   geom_line(mapping = aes(x = speed*1.2, y = dist) , color=&quot;red&quot;)</code></pre>
-<p><img src="blog_ggplot2_intro_files/figure-html/2Lines-1.png" width="576" /></p>
+<p><img src="blog_ggplot2_files/figure-html/2Lines-1.png" width="576" /></p>
 <p>Notice how we add a color as a parameter to the geom_line() function. There are a few ways to add color, they are discussed in a later section.</p>
 <hr />
 </div>
-<div id="scatter-plots" class="section level1">
-<h1>Scatter Plots</h1>
+<div id="scatter-plots" class="section level2">
+<h2>Scatter Plots</h2>
 <p>To create a scatter plot, we do the following.</p>
 <pre class="r"><code>ggplot(data=cars) +
   geom_point( mapping = aes(x = speed, y = dist) )</code></pre>
-<p><img src="blog_ggplot2_intro_files/figure-html/scatter-1.png" width="576" /></p>
+<p><img src="blog_ggplot2_files/figure-html/scatter-1.png" width="576" /></p>
 <p>As you are hopefully beginning to see, the basic structure of ggplot graphics are the same, we just change the geometries that get created.</p>
 <p>Let’s add a line to this scatter plot, and highlight a key feature.</p>
 <pre class="r"><code>ggplot(data=cars, mapping = aes(x = speed, y = dist)) +
   geom_point() +
   geom_line()</code></pre>
-<p><img src="blog_ggplot2_intro_files/figure-html/scatterAndLine-1.png" width="576" /></p>
+<p><img src="blog_ggplot2_files/figure-html/scatterAndLine-1.png" width="576" /></p>
 <p>Notice here that the aesthetics are mapped once inside of the original call to ggplot(). It does not matter where you put the mapping, and this saves us from typing it in each geometry. This all works because each geometry has a parameter called “inherit.aes” which is automatically set to true.</p>
 <hr />
 </div>
-<div id="histograms" class="section level1">
-<h1>Histograms</h1>
+<div id="histograms" class="section level2">
+<h2>Histograms</h2>
 <p>A basic histogram is simple. The bin width defaults to 30. I would encourage you to explore other sizes.</p>
 <pre class="r"><code>ggplot(data=cars) +
   geom_histogram(mapping = aes(x = dist), binwidth = 10, color=&quot;blue&quot;)</code></pre>
-<p><img src="blog_ggplot2_intro_files/figure-html/histogram-1.png" width="576" /></p>
+<p><img src="blog_ggplot2_files/figure-html/histogram-1.png" width="576" /></p>
 <p>What if we want to create a histogram and overlay a kernel density on top of it? Notice that this might be a bit of a challenge, considering that the y values are counts, but the kernel density function has y values in terms of much smaller density terms. Luckily, if you set the y value of the histogram to “..density..”, it works exactly as we would want.</p>
 <pre class="r"><code>ggplot(data=cars) +
   geom_histogram(mapping = aes(x = dist, y = ..density..), binwidth = 10, color=&quot;blue&quot;) +
   geom_density(mapping = aes(x = dist))</code></pre>
-<p><img src="blog_ggplot2_intro_files/figure-html/histogramAndDensity-1.png" width="576" /></p>
+<p><img src="blog_ggplot2_files/figure-html/histogramAndDensity-1.png" width="576" /></p>
 <hr />
 </div>
-<div id="legends" class="section level1">
-<h1>Legends</h1>
+<div id="legends" class="section level2">
+<h2>Legends</h2>
 <p>Remember when we had two lines on the same graph? What if we wanted to display a legend that would allow the user to differentiate between them? One odd way to accomplish this is actually through the colour parameter inside the aes function. Let’s take a look.</p>
 <pre class="r"><code>ggplot(data=cars) +
   geom_line(mapping = aes(x = speed, y = dist, colour = &quot;Original&quot;)) +
   geom_line(mapping = aes(x = speed*1.2, y = dist, colour=&quot;Shifted&quot;) ) +
   labs(colour=&quot;Legend&quot;)</code></pre>
-<p><img src="blog_ggplot2_intro_files/figure-html/legend-1.png" width="576" /></p>
+<p><img src="blog_ggplot2_files/figure-html/legend-1.png" width="576" /></p>
 <p>IMPORTANT: This example brings up an important nuance if you are working with legends this way. The “colour” parameter goes inside the aes function, and maps the title of the line (Original / Shifted) to the color of the line, where the color is chosen for you by ggplot. The “color” parameter gets sent to the geom_line function, and if you try to use this in combination with “colour”, it will override all plots on the graph to that “color.”</p>
 <p>The labs function tacked on at the end allows us to change the title of the legend from “colour” to “Legend.” It can also be used to change the x and y axis titles using “x=” or “y=” as parameters.</p>
 <p>For a more in depth analysis of legends, see <a href="http://www.cookbook-r.com/Graphs/Legends_(ggplot2)/">this</a> page.</p>
 <hr />
 </div>
-<div id="quick-plots-with-qplot" class="section level1">
-<h1>Quick Plots with qplot()</h1>
+<div id="quick-plots-with-qplot" class="section level2">
+<h2>Quick Plots with qplot()</h2>
 <hr />
 </div>
-<div id="interactive-plots-with-plotly" class="section level1">
-<h1>Interactive Plots With Plotly</h1>
+<div id="interactive-plots-with-plotly" class="section level2">
+<h2>Interactive Plots With Plotly</h2>
 </div>
 
 

@@ -29,14 +29,14 @@ No matter what level of R Programmer you are, you likely struggle to remember ev
 One might say, "R already makes nice graphics!" So, before we get started, let's quickly compare ggplot vs base R with a simple scatter plot example. As you can see below, the plot created using a combination of ggplot's quick plot function and plotly is clearly superior over base R.
 
 ###Base R
-```{r, fig.height=4, fig.width=6}
+```{r exampleUgly}
 plot(cars)
 ```
 
 ---
 
 ###ggplot2
-```{r}
+```{r examplePretty}
 #Create a nice plot using "quick plot"
 prettyPlot <- qplot(data=cars, x=speed, y=dist, geom="point")
 #Make the plot interactive using ggplotly
@@ -148,7 +148,7 @@ For a more in depth analysis of legends, see [this](http://www.cookbook-r.com/Gr
 
 As nice as it is to have complete flexibility over my graphs, sometimes I just need to create a really quick graph. Luckily, qplot does just that.
 
-```{r}
+```{r qplotLine}
 qplot(x = speed, y = dist, data = cars, geom = "line", main = c("Distance VS Speed"), xlab = "sp", ylab = "di")
 ```
 
@@ -156,7 +156,7 @@ qplot is nice because it gives you a number of the important options for formati
 
 A quick switch of the geom and you get a scatter plot. You can add other geometries onto the qplot (like this useful linear regression line and standard error range), but you cannot add a second qplot. 
 
-```{r}
+```{r qplotScatter}
 qplot(x = speed, y = dist, data = cars, geom = "point", main = c("Distance VS Speed"), xlab = "sp", ylab = "di") +
   geom_smooth(method = "lm")
 ```

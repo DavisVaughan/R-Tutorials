@@ -9,9 +9,9 @@ output:
       smooth_scroll: True
     fig_width: 6
     fig_height: 4
+    fig_align: "center"
 ---
 
-<center>
 
 ```{r include=FALSE}
 #Libraries
@@ -23,24 +23,30 @@ No matter what level of R Programmer you are, you likely struggle to remember ev
 
 ---
 
+
 ##Some Motivation {.tabset .tabset-fade}
 
 One might say, "R already makes nice graphics!" So, before we get started, let's quickly compare ggplot vs base R with a simple scatter plot example. As you can see below, the plot created using a combination of ggplot's quick plot function and plotly is clearly superior over base R.
 
 ###Base R
-```{r exampleUgly}
+```{r exampleUgly, fig.align='center'}
 plot(cars)
 ```
 
 ---
 
 ###ggplot2
-```{r examplePretty}
+
+<center>
+
+```{r examplePretty, fig.align='center'}
 #Create a nice plot using "quick plot"
 prettyPlot <- qplot(data=cars, x=speed, y=dist, geom="point")
 #Make the plot interactive using ggplotly
-ggplotly(prettyPlot, height = 400, width = 600)
+ggplotly(prettyPlot)
 ```
+
+</center>
 
 ---
 
@@ -48,14 +54,13 @@ ggplotly(prettyPlot, height = 400, width = 600)
 
 It's time to get into the nitty gritty. Let's learn to make a line graph using ggplot2. Here is the basic syntax.
 
-```{r line}
+```{r line, fig.align='center'}
 ggplot(data=cars) +
   geom_line(mapping = aes(x = speed, y = dist) )
 ```
 
 Let's break this down. It seems like a lot just to make a line graph, and it is, but let's give ggplot2 the benefit of the doubt. What it lacks in wordiness, it makes up for in flexibility. Here is what is happening:
 
-<div align="left">
 
 1) ggplot(data=cars) - The basic function for setting up the plot. Here, I define the data.frame that I will be pulling my data from using the data parameter. Cars is just a dataset that comes standard with R.
 
@@ -67,12 +72,11 @@ Let's break this down. It seems like a lot just to make a line graph, and it is,
     * mapping - Where we define our aesthetics that get "mapped" to the line we are drawing.
     
     * aes() - The aesthetics function. This is where you add your x and y components. It can also add a number of other things, like color (or colour as Hadley the creator of ggplot2 would say). This can actually help with creating a legend, check that section for more information. Also, see [this](http://stackoverflow.com/questions/11657380/is-there-a-table-or-catalog-of-aesthetics-for-ggplot2) stackoverflow post for a complete list of default aesthetics that you can play with.
-
-</div>
+    
 
 What if we wanted to add another line to the graph? Just add another line geometry! Easy!
 
-```{r 2Lines}
+```{r 2Lines, fig.align='center'}
 ggplot(data=cars) +
   geom_line(mapping = aes(x = speed, y = dist)) +
   geom_line(mapping = aes(x = speed*1.2, y = dist) , color="red")
@@ -86,7 +90,7 @@ Notice how we add a color as a parameter to the geom_line() function. There are 
 
 To create a scatter plot, we do the following.
 
-```{r scatter}
+```{r scatter, fig.align='center'}
 ggplot(data=cars) +
   geom_point( mapping = aes(x = speed, y = dist) )
 ```
@@ -95,7 +99,7 @@ As you are hopefully beginning to see, the basic structure of ggplot graphics ar
 
 Let's add a line to this scatter plot, and highlight a key feature. 
 
-```{r scatterAndLine}
+```{r scatterAndLine, fig.align='center'}
 ggplot(data=cars, mapping = aes(x = speed, y = dist)) +
   geom_point() +
   geom_line()
@@ -109,14 +113,14 @@ Notice here that the aesthetics are mapped once inside of the original call to g
 
 A basic histogram is simple. The bin width defaults to 30. I would encourage you to explore other sizes.
 
-```{r histogram}
+```{r histogram, fig.align='center'}
 ggplot(data=cars) +
   geom_histogram(mapping = aes(x = dist), binwidth = 10, color="blue")
 ```
 
 What if we want to create a histogram and overlay a kernel density on top of it? Notice that this might be a bit of a challenge, considering that the y values are counts, but the kernel density function has y values in terms of much smaller density terms. Luckily, if you set the y value of the histogram to "..density..", it works exactly as we would want.
 
-```{r histogramAndDensity}
+```{r histogramAndDensity, fig.align='center'}
 ggplot(data=cars) +
   geom_histogram(mapping = aes(x = dist, y = ..density..), binwidth = 10, color="blue") +
   geom_density(mapping = aes(x = dist))
@@ -128,7 +132,7 @@ ggplot(data=cars) +
 
 Remember when we had two lines on the same graph? What if we wanted to display a legend that would allow the user to differentiate between them? One odd way to accomplish this is actually through the colour parameter inside the aes function. Let's take a look.
 
-```{r legend}
+```{r legend, fig.align='center'}
 ggplot(data=cars) +
   geom_line(mapping = aes(x = speed, y = dist, colour = "Original")) +
   geom_line(mapping = aes(x = speed*1.2, y = dist, colour="Shifted") ) +
@@ -147,7 +151,7 @@ For a more in depth analysis of legends, see [this](http://www.cookbook-r.com/Gr
 
 As nice as it is to have complete flexibility over my graphs, sometimes I just need to create a really quick graph. Luckily, qplot does just that.
 
-```{r qplotLine}
+```{r qplotLine, fig.align='center'}
 qplot(x = speed, y = dist, data = cars, geom = "line", main = c("Distance VS Speed"), xlab = "sp", ylab = "di")
 ```
 
@@ -155,7 +159,7 @@ qplot is nice because it gives you a number of the important options for formati
 
 A quick switch of the geom and you get a scatter plot. You can add other geometries onto the qplot (like this useful linear regression line and standard error range), but you cannot add a second qplot. 
 
-```{r qplotScatter}
+```{r qplotScatter, fig.align='center'}
 qplot(x = speed, y = dist, data = cars, geom = "point", main = c("Distance VS Speed"), xlab = "sp", ylab = "di") +
   geom_smooth(method = "lm")
 ```

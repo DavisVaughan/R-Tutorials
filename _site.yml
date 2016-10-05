@@ -15,6 +15,7 @@ navbar:
           href: blog_RCpp.html
 output:
   html_document:
+    highlight: "tango"
     theme: cosmo
     
     

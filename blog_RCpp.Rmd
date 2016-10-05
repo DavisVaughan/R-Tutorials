@@ -1,28 +1,47 @@
 ---
-title: "Cpp + R = RCpp"
-output: html_document
+title: <center><br>_Cpp + R = RCpp_</br></center>
+output: 
+  html_document:
+    css: custom.css
+    code_folding: show
+    toc: True
+    toc_float:
+      smooth_scroll: True
+    fig_width: 6
+    fig_height: 4
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+In the case that R code just isn't fast enough, one available option is to convert your R code into C++. This does take some extra effort the first time around, and you have to know a bit about C++, but it can be a very powerful approach. Converting code to C++ is especially useful if you have to run a large number of loops in R. The more appropriate choice would be to vectorize the R code, but sometimes you have no other option. 
+
+The link between R and C++ is a package appropriately named RCpp. It makes your life easy by not having to worry about garbage collection, and there is even code completion for the C++ code!
+
+Note that often only key time intensive functions need to be converted to C++.
+
+---
+
+#Setting up RCpp
+
+Here are the steps to set up Rcpp, and write a basic function in C++ that can be used in R.
+
+1) Create a C++ file with a function that you want to use in R. We can do this right from RStudio. File -> New File -> C++ File will open one right up for us. Let's create a simple function that will sort a vector of numbers that we pass it. If you are familiar with C++, there may be a few things in the code that seem strange. Ignore them for now, we will get to them later.
+
+```{r engine='Rcpp'}
+#include <Rcpp.h>
+using namespace Rcpp;
+using namespace std;
+
+// [[Rcpp::export]]
+void sortPrinter(NumericVector x) {
+  Rcout << "[C++] Before: " << x << '\n'; 
+  sort(x.begin(),x.end());
+  Rcout << "[C++] After: " << x << '\n';  
+}
 ```
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+2) Install the RCpp package.
 
-```{r cars}
-summary(cars)
+```{r}
+#install.packages("Rcpp")
 ```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

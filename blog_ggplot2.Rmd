@@ -13,7 +13,6 @@ output:
 
 <center>
 
-
 ```{r include=FALSE}
 #Libraries
 library(ggplot2)

@@ -150,7 +150,8 @@ For a more in depth analysis of legends, see [this](http://www.cookbook-r.com/Gr
 As nice as it is to have complete flexibility over my graphs, sometimes I just need to create a really quick graph. Luckily, qplot does just that.
 
 ```{r qplotLine, fig.align='center'}
-qplot(x = speed, y = dist, data = cars, geom = "line", main = c("Distance VS Speed"), xlab = "sp", ylab = "di")
+qplot(x = speed, y = dist, data = cars, geom = "line",
+      main = c("Distance VS Speed"), xlab = "sp", ylab = "di")
 ```
 
 qplot is nice because it gives you a number of the important options for formating, all in one function.
@@ -158,7 +159,8 @@ qplot is nice because it gives you a number of the important options for formati
 A quick switch of the geom and you get a scatter plot. You can add other geometries onto the qplot (like this useful linear regression line and standard error range), but you cannot add a second qplot. 
 
 ```{r qplotScatter, fig.align='center'}
-qplot(x = speed, y = dist, data = cars, geom = "point", main = c("Distance VS Speed"), xlab = "sp", ylab = "di") +
+qplot(x = speed, y = dist, data = cars, geom = "point",
+      main = c("Distance VS Speed"), xlab = "sp", ylab = "di") +
   geom_smooth(method = "lm")
 ```
 

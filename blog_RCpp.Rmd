@@ -1,9 +1,8 @@
 ---
-title: <center><br>_Cpp + R = RCpp_</br></center>
+title: <center>_Cpp + R = RCpp_</center>
 output: 
   html_document:
     css: custom.css
-    code_folding: show
     toc: True
     toc_float:
       smooth_scroll: True
@@ -42,6 +41,6 @@ void sortPrinter(NumericVector x) {
 
 2) Install the RCpp package.
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 #install.packages("Rcpp")
 ```

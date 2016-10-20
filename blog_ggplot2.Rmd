@@ -1,14 +1,13 @@
 ---
-title: <center><br>_Introduction to ggplot2_</br></center>
+title: <center>_Introduction to ggplot2_</center>
 output: 
   html_document:
     css: custom.css
-    code_folding: show
     toc: True
     toc_float:
       smooth_scroll: True
-    fig_width: 6
-    fig_height: 4
+    fig_width: 5.2
+    fig_height: 2.8
     fig_align: "center"
 ---
 
@@ -53,7 +52,6 @@ ggplotly(prettyPlot)
 ##Line Graphs
 
 It's time to get into the nitty gritty. Let's learn to make a line graph using ggplot2. Here is the basic syntax.
-
 ```{r line, fig.align='center'}
 ggplot(data=cars) +
   geom_line(mapping = aes(x = speed, y = dist) )
@@ -62,11 +60,11 @@ ggplot(data=cars) +
 Let's break this down. It seems like a lot just to make a line graph, and it is, but let's give ggplot2 the benefit of the doubt. What it lacks in wordiness, it makes up for in flexibility. Here is what is happening:
 
 
-1) ggplot(data=cars) - The basic function for setting up the plot. Here, I define the data.frame that I will be pulling my data from using the data parameter. Cars is just a dataset that comes standard with R.
+1) __ggplot(data=cars)__ - The basic function for setting up the plot. Here, I define the data.frame that I will be pulling my data from using the data parameter. Cars is just a dataset that comes standard with R.
 
-2) "+" - Yes, the plus sign actually does something. One way to think about this is "adding" a geometry to your plot (like a line). [Here](http://stackoverflow.com/questions/38166708/plus-sign-between-ggplot2-and-other-function-r) is something that might clear this up.
+2) __"+"__ - Yes, this little guy actually does something. One way to think about this is "adding" a geometry to your plot (like a line). [Here](http://stackoverflow.com/questions/38166708/plus-sign-between-ggplot2-and-other-function-r) is something that might clear this up.
 
-3) geom_line(mapping = aes(x = speed, y = dist) )
+3) __geom_line(mapping = aes(x = speed, y = dist) )__
     * geom -  Really "geometry," and is a common way to add elements to a ggplot graph. The geometry here is a line.
     
     * mapping - Where we define our aesthetics that get "mapped" to the line we are drawing.

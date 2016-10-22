@@ -28,7 +28,7 @@ No matter what level of R Programmer you are, you likely struggle to remember ev
 One might say, "R already makes nice graphics!" So, before we get started, let's quickly compare ggplot vs base R with a simple scatter plot example. As you can see below, the plot created using a combination of ggplot's quick plot function and plotly is clearly superior over base R.
 
 ###Base R
-```{r exampleUgly, fig.align='center'}
+```{r exampleUgly, fig.align='center', fig.width=6, fig.height=4}
 plot(cars)
 ```
 
